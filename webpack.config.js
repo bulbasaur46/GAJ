@@ -43,7 +43,7 @@ module.exports = {
     hot: true, //hot reload. When data hasn't settled and data is still updating, it'll keep updating.
     historyApiFallback: true, //We're taking AP History. LOL
     host: 'localhost', //I think this may be our host
-    port: 8008, // connect for port 8008. This is our "front end"
+    port: 8080, // connect for port 8008. This is our "front end"
     proxy: {
       '/': {
         target: 'http://localhost:3000', //backend
