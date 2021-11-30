@@ -34,7 +34,7 @@ const LoginForm = (props) => {
   // };
   
   return (
-    <div>
+    <div className='wrap'>
       <div className='login-field'>
         <input 
           type='text'
