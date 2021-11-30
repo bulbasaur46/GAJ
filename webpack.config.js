@@ -45,10 +45,10 @@ module.exports = {
     host: 'localhost', //I think this may be our host
     port: 8080, // connect for port 8008. This is our "front end"
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000', //backend
-        secure: false,
-      },
+      // '/api': {
+      //   target: 'http://localhost:3000', //backend
+      //   secure: false,
+      // },
       '/api/**': {
         target: 'http://localhost:3000',
         secure: false,
