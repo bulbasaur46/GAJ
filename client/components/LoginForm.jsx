@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 
 
 const LoginForm = (props) => {
@@ -8,30 +9,28 @@ const LoginForm = (props) => {
   const password = useFormInput('');
   const [error, setError] = useState('');
   
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   
-  //   const handleLogin = () => {
-  //     //axios request
-  //     setError(null);
-  //     axios
-  //       .post(/*nothing yet*/, { email: email.value, password: password.value })
-  //       .then((res) => {
-  //         console.log('Wrong password response: ', res);'));
-  //         if (res.data.error) {
-  //           setError(res.data.error);
-  //         } else {
-  //           props.history.push({
-  //             pathname: '/',
-  //             state: response.data.user
-  //           });
-  //     };
-  //   })
-  //   .catch((err) => {
-  //     console.log('Caught error in axios.catch');
-  //     setError('Something went wrong, Please try again later');
-  //   });
-  // };
+  const handleLogin = () => {
+    //axios request
+    setError(null);
+    axios
+      .get('/api/user/getUserData', { 
+        email: email.value, 
+        password: password.value })
+      .then((res) => {
+        console.log('Wrong password response: ', res);
+        if (res.data.error) {
+          setError(res.data.error);
+        } else {
+          navigate('/home', { state: res.data.user });
+        }
+      })
+      .catch((err) => {
+        setError('Something went wrong, Please try again later');
+      });
+  };
   
   return (
     <div className='wrap'>
@@ -54,6 +53,13 @@ const LoginForm = (props) => {
           autoComplete='new-password'
           required
         />
+      </div>
+      <ErrorMessage error={error} setError={setError}/>
+      <div>
+        <div>{''}
+          <br/>
+          <input type='submit' className='submit' id='login' value='Login' onClick={handleLogin}/>
+        </div>
       </div>
     </div> 
   );

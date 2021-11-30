@@ -7,7 +7,6 @@ router.get('/getUserData', userController.getUser, (req, res) => {
 });
 
 router.post('/create', userController.createUser, (req, res) => {
-
   return res.status(200).send(res.locals.message);
 });
 

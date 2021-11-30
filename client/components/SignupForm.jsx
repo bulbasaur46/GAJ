@@ -29,10 +29,7 @@ const SignupForm = props => {
         }
       })
         .then(res => {
-          navigate({
-            pathname: '/dashboard',
-            state: res.data.user
-          });
+          navigate('/home', { state: res.data.user });
         })
         .catch(err => console.log(err));
     } else {
