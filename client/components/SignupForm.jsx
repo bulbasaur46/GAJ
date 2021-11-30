@@ -42,7 +42,7 @@ const SignupForm = props => {
   
   return (
     <div className='wrap'>
-      <div className='signup-form'>
+      <div className='signup-pg'>
         <center>Sign-up with your email address</center><br/><br/>
         <div>
           What is your email? <br/>
