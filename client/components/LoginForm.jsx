@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -8,7 +8,7 @@ const LoginForm = (props) => {
   const password = useFormInput('');
   const [error, setError] = useState('');
   
-  
+  const history = useNavigate();
 
   
   //   const handleLogin = () => {
@@ -55,7 +55,6 @@ const LoginForm = (props) => {
           required
         />
       </div>
-      <Link to='/signup'>Sign Up</Link>
     </div> 
   );
 };
