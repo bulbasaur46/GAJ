@@ -21,7 +21,7 @@ userController.getUser = (req, res, next) => {
 userController.createUser = (req, res, next) => {
   const createUserQuery = 'INSERT INTO users (user_name, password, email) VALUES ($1, $2, $3)';
   const params = [
-    req.body.user_name,
+    req.body.username,
     req.body.password,
     req.body.email
   ];

@@ -11,7 +11,7 @@ SET row_security = off;
 
 CREATE TABLE public.users (
   "_id" bigserial NOT NULL,
-  "user_name" varchar NOT NULL UNIQUE,
+  "username" varchar NOT NULL UNIQUE,
   "password" varchar NOT NULL,
   "email" varchar NOT NULL,
   "application_count" bigint DEFAULT 0,
