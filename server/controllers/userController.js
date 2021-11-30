@@ -3,7 +3,7 @@ const db = require('../models/applicationTrackerModel');
 const userController = {};
 
 userController.getUser = (req, res, next) => {
-  const queryText = 'SELECT * FROM users WHERE user_name = \'' + String(req.query.user_name) + '\';';
+  const queryText = 'SELECT * FROM users WHERE username = \'' + String(req.query.username) + '\';';
   db.query(queryText, (err, result) => {
     if (err){
       return next(err);
@@ -19,7 +19,8 @@ userController.getUser = (req, res, next) => {
 };
 
 userController.createUser = (req, res, next) => {
-  const createUserQuery = 'INSERT INTO users (user_name, password, email) VALUES ($1, $2, $3)';
+  console.log("this is the req.body", req.body);
+  const createUserQuery = 'INSERT INTO users (username, password, email) VALUES ($1, $2, $3)';
   const params = [
     req.body.username,
     req.body.password,
