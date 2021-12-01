@@ -3,7 +3,8 @@ const db = require('../models/applicationTrackerModel');
 const userController = {};
 
 userController.logIn = (req, res, next) => {
-  const queryText = 'SELECT * FROM users WHERE email = \'' + String(req.query.email) + '\';';
+  console.log('request body: ', req.body);
+  const queryText = 'SELECT * FROM users WHERE email = \'' + String(req.body.email) + '\';';
   db.query(queryText, (err, result) => {
     if (err){
       return next(err);
@@ -13,11 +14,12 @@ userController.logIn = (req, res, next) => {
       if (!userInfo) {
         return next({ status: 400, message: {err: 'no user with that email'}});
       }
-      // check pasword matches
-      if (req.query.password !== userInfo.password) {
+      // check password matches
+      if (req.body.password !== userInfo.password) {
         return next({ status: 400, message: {err: 'password does not match'}});
       }
       res.locals.userInfo = userInfo;
+      // console.log('result', result);
       res.cookie('user_id', userInfo._id);
       return next();
     }

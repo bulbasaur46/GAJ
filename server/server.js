@@ -15,6 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+//Trying this out
+app.use((res, req, next) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  next();
+});
+
 app.use('/api/user', userRouter);
 app.use('/api/application', applicationRouter);
 
@@ -33,6 +39,8 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+const server = app.listen(port, () => console.log(`Listening on port ${port}`));
+
+server.timeout = 240000;
 
 module.exports = app;

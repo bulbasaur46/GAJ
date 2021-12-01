@@ -8,7 +8,6 @@ router.get('/logIn', userController.logIn, cookieController.createCookie, (req, 
 });
 
 router.post('/create', userController.createUser, (req, res) => {
-
   return res.sendStatus(200);
 });
 

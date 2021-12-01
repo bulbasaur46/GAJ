@@ -18,7 +18,6 @@ const SignupForm = props => {
     e.preventDefault();
     if (password.value === password2.value) {
     //axios request
-      console.log(username.value, email.value, password.value);
       axios.post('/api/user/create', {
         username: username.value,
         email: email.value,
@@ -29,10 +28,7 @@ const SignupForm = props => {
         }
       })
         .then(res => {
-          navigate({
-            pathname: '/dashboard',
-            state: res.data.user
-          });
+          navigate('/home', { state: res.data.user });
         })
         .catch(err => console.log(err));
     } else {
