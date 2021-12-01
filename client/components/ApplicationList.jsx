@@ -1,38 +1,37 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AddEditApp from './AddEditApp';
 import { DataGrid } from '@mui/x-data-grid';
 
 const ApplicationList = ({apps, setApps}) => {
   const rows = apps.length ? apps.map(app => {
-    return ({ id: app.id, company: app.company, position: app.position });
+    return ({ id: app._id, ...app});
   }) : [];
+  
+  function dateFix(params) {
+    return new Date(params.value).toLocaleDateString();
+  }
+  
   const columns = [
-    {field: 'col1', headerName: 'Company', flex: 1},
-    {field: 'col2', headerName: 'Position', flex: 1},
-    {field: 'col3', headerName: 'Date Applied', flex: 0.5, minWidth: 100},
-    {field: 'col4', headerName: 'Status', flex: 0.5, minWidth: 100},
+    {field: 'company', headerName: 'Company', flex: 1},
+    {field: 'job_title', headerName: 'Job Title', flex: 1},
+    {field: 'date_of_application', headerName: 'Date Applied', flex: 0.5, minWidth: 100, valueFormatter: dateFix},
+    {field: 'status', headerName: 'Status', flex: 0.5, minWidth: 100},
   ];
   
+  const navigate = useNavigate();
+  const handleClick = (table) => {
+    console.log(table.row.company);
+    navigate(`/app/${table.row.id}`, {state: table.row});
+  };
+
   return (
     <div>
-      <h1>Your Applications</h1>
-      <AddEditApp apps={apps} setApps={setApps}/>
+      <h1>Your Applications</h1>  
+      <div style={{ height: 350, width: '100%' }}>
+        <DataGrid rows={rows} columns={columns} onRowClick={handleClick} />
+      </div>
 
-        <div style={{ height: 350, width: '100%' }}>
-          <DataGrid rows={rows} columns={columns} />
-        </div>
-
-      {/* <ul>
-        {props.applications.map(application => {
-          return (
-            <li key={application.id}>
-              <h2>{application.name}</h2>
-              <h2>{application.description}</h2>
-              <h2>{Date.now}</h2>
-            </li>
-          );
-        })}
-      </ul> */}
     </div>
   );
 };

@@ -23,6 +23,7 @@ app.use((res, req, next) => {
 
 app.use('/api/user', userRouter);
 app.use('/api/application', applicationRouter);
+app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../public/index.html')));
 

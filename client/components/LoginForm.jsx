@@ -39,7 +39,7 @@ const LoginForm = (props) => {
   
   return (
     <div className='wrap'>
-      <center>Welcome</center><br/>
+      <center style={{fontWeight: 'bold'}}>Welcome</center><br/>
       <div className='login-field'>
         <TextField 
           className='input' 

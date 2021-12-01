@@ -36,6 +36,7 @@ CREATE TABLE public.jobs(
   "company" varchar NOT NULL,
   "industry" varchar,
   "job_title" varchar NOT NULL,
+  -- "positionType" varchar NOT NULL,
   "wage" bigint,
   "date_posted" date,
   "date_of_application" date,

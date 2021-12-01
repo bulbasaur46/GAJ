@@ -14,15 +14,15 @@ const Calendar = props => {
     const dateFormat = 'MMMM YYYY';
     return ( 
       <div className='header row flex-middle'>
-        <div className='col col-start'>
+        <div className='column col-start'>
           <div className='icon' onClick={prevMonth}>
             chevron_left
           </div>
         </div>
-        <div className='col col-center'>
+        <div className='column col-center'>
           <span>{moment(state.currentDate).format(dateFormat)}</span>
         </div>
-        <div className='col col-end' onClick={nextMonth}>
+        <div className='column col-end' onClick={nextMonth}>
           <div className='icon' onClick={nextMonth}>chevron_right</div>
         </div>
       </div>
@@ -36,7 +36,7 @@ const Calendar = props => {
     let startDate = moment(state.currentDate).startOf('week');
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="col col-center" key={i}>
+        <div className="column col-center" key={i}>
           {moment(startDate).format(dateFormat)}
         </div>
       );
@@ -66,12 +66,10 @@ const Calendar = props => {
 
         days.push(
           <div
-            className={`col cell ${!moment(day).isSame(state.selectedDate, 'month') ? 'disabled' : ''}`}
+            className={`column cell ${!moment(day).isSame(state.selectedDate, 'month') ? 'disabled' : moment(day).isSame(state.selectedDate, 'day') ? 'selected' : ''}`}
             key={day}
             onClick={() => {
-              setState({
-                selectedDate: cloneDay,
-              });
+              onDateClick(moment(cloneDay).format('YYYY-MM-DD'));
             }}
           >
             <span className='number'>{formattedDate}</span>
@@ -119,82 +117,3 @@ const Calendar = props => {
 
 export default Calendar;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// we need to pull the state from the parent component later
-// const state = {
-//   dateObject: moment(),
-// };
-
-// //creates blank area for calendar
-// const blanks = [];
-// for (let i = 0; i < firstDayOfMonth(); i++) {
-//   blanks.push(<td className="calendar-day empty">{''}</td>
-//   );
-// }
-// //generates table of date in the month
-// const daysInMonth = [];
-// for (let d = 1; d <= this.state.dateObject.daysInMonth(); d++) {
-//   daysInMonth.push(
-//     <td key={d} className="calendar-day">
-//       {d}
-//     </td>
-//   );
-// }
-
-
-
-// //variables for the calendar
-// const totalSlots = [...blanks, ...daysInMonth];
-// const rows = [];
-// let cells = [];
-
-// totalSlots.forEach((row, i) => {
-//   if (i % 7 !== 0) { //if the index is not divisible by 7, dont go to the next week
-//     cells.push(row);
-//   } else {
-//     rows.push(cells); //when you reach the end of the week, push the cells to the rows
-//     cells = []; //empty the cells
-//     cells.push(row); //push the row to the cells
-//   }
-//   if (i === totalSlots.length - 1) { //when you reach the end of the array, push the cells to the rows
-//     rows.push(cells);
-//   }
-// });
-
-// const trElems = rows.map((d, i) => {
-//   return <tr key={d}>{d}</tr>;
-// });
-
-
-
-// const weekdayShort = moment.weekdayShort();
-
-// const weekdaysShortname = this.weekdayShort.map(day => {
-//   return (
-//     <th key={day} className='week-day'>
-//       {day}
-//     </th>
-//   );
-// });
-// };
-
-// //getter function for first day of month
-// const firstDayOfMonth = () => {
-// const dateObject = this.state.dateObject;
-// const firstDay = moment(dateObject)
-//   .startOf('month')
-//   .format('d');
-// return firstDay;

@@ -39,20 +39,20 @@ const SignupForm = props => {
   
   return (
     <div className='signup-pg'>
-      <center>Sign-up with your email address</center><br/><br/>
-      <div>
+      <center style={{fontSize: '15px'}}>Sign-up with your email address</center><br/><br/>
+      <div style={{fontSize: '14px'}}>
         What is your email? <br/>
         <input type='text' placeholder='Enter your email' id='email' value={email.value} onChange={email.onChange} />
       </div>
-      <div style={{marginTop: 10}}>
+      <div style={{marginTop: 10, fontSize: '14px'}}>
         Create a password: <br/>
         <input type='password' placeholder='Enter your password' id='password' value={password.value} onChange={password.onChange} />
       </div>
-      <div style={{marginTop: 10}}>
+      <div style={{marginTop: 10, fontSize: '14px'}}>
         Confirm your password: <br/>
         <input type='password' placeholder='Confirm your password' id='password2' value={password2.value} onChange={password2.onChange} />
       </div>
-      <div style={{marginTop: 10}}>
+      <div style={{marginTop: 10, fontSize: '14px'}}>
         What is your username? <br/>
         <input type='text' placeholder='Enter your username' id='username' value={username.value} onChange={username.onChange} />
       </div>
