@@ -19,7 +19,7 @@ const ApplicationView = props => {
       <hr className='solid'/>
       <br/>
       <div>
-        <ApplicationList onClick={() => {<AppDetails/>;}}/>
+        <AppDetails />
       </div>
     </div>
   );

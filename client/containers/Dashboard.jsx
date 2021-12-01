@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import ApplicationView from './ApplicationView';
+import ApplicationList from '../components/ApplicationList';
 import InterviewList from '../components/InterviewList';
 import Calendar from '../components/Calendar';
 import StatsBar from '../components/StatsBar';
@@ -35,7 +35,7 @@ const Dashboard = props => {
   return (
     <div className='dashboard'>
       <div>
-        <ApplicationView state={state}/>
+        <ApplicationList state={state}/>
       </div>
       {/* <div>
         <StatsBar state={state}/>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const StatsBar = props => {
   return (
     <div className="stats-bar">

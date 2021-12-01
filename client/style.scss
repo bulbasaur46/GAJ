@@ -1,4 +1,3 @@
-   
 $primary: #343641;
 $secondary: #6abfa5;
 $tertiary: #f6eeba;
@@ -21,6 +20,14 @@ $whiteText: white;
 	text-align: center;
 	letter-spacing: 0.2em;
 	margin-bottom: 10px;
+
+}
+
+div.err-msg {
+	color: red;
+	font-size: 1.2em;
+	margin-top: 10px;
+	transform: translateX(-20%);
 }
 
 body {
@@ -64,8 +71,8 @@ h4 {
 div.wrap {
 	background-color: #fff;
 	padding: 2%;
-	width: 30%;
-	min-width: 350px;
+	width: 10%;
+	min-width: 300px;
 	margin: 0 auto;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -73,15 +80,15 @@ div.wrap {
 	border: 1px solid #fff;
 	/* max-width: 16em; */
 	/* box-shadow: 5px 5px 15px rgba(119, 117, 117, 0.664); */
-	transform: translateY(20%);
+	transform: translateY(110%);
 }
 
 div.signup-pg {
 	background-color: #fff;
 	font-weight: bold;
 	padding: 2%;
-	width: 25%;
-	min-width: 350px;
+	width: 10%;
+	min-width: 300px;
 	margin: 0 auto;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -89,7 +96,13 @@ div.signup-pg {
 	border: 1px solid #fff;
 	/* max-width: 16em; */
 	/* box-shadow: 5px 5px 15px rgba(119, 117, 117, 0.664); */
-	transform: translateY(30%);
+	transform: translate(2%, 40%);
+}
+
+div.login-field {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 }
 
 
@@ -155,39 +168,8 @@ input {
 	transition: all 0.2s ease-in-out;
 }
 
-input.submit {
-	width: 100%;
-	padding: 5%;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border: 1px solid #e4e4e4;
-	font-size: 15px;
-	background-color: #32befffa;
-	color: #fff;
-	margin-top: 25px;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-	outline: none;
-}
 
-input.submit:hover {
-	width: 100%;
-	padding: 5%;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border: 1px solid #32cd32;
-	font-size: 15px;
-	background-color: #32cd32;
-	color: #fff;
-	margin-top: 25px;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
-}
-
-input.close-btn {
+.close-btn {
 	display: flex;
 	float: right;
 	background: none;
@@ -200,7 +182,7 @@ input.close-btn {
 	transform: translateY(-30%);
 }
 
-input.logout-btn:hover {
+.logout-btn:hover {
 	display: flex;
 	box-sizing: border-box;
 	justify-content: center;
@@ -219,7 +201,7 @@ input.logout-btn:hover {
 	cursor: pointer;
 }
 
-input.addApp {
+.addApp {
 	display: flex;
 	justify-content: center;
 	text-align: left;
@@ -296,4 +278,45 @@ button.signup-btn {
 button.signup-btn:hover {
 	cursor: pointer;
 	color: #32cd32;
+}
+
+button.submit {
+	width: 80%;
+	padding: 5%;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 1px solid #e4e4e4;
+	font-size: 15px;
+	background-color: #32befffa;
+	color: #fff;
+	margin-top: 25px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	outline: none;
+	transform: translateX(13%);
+}
+
+button.submit:hover {
+	width: 80%;
+	padding: 5%;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 1px solid #32cd32;
+	font-size: 15px;
+	background-color: #32cd32;
+	color: #fff;
+	margin-top: 25px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	transform: translateX(13%);
+}
+
+span.errorMessage {
+	color: darkred;
+	font-size: 0.7em;
+	margin-left: 30px;
+
 }
