@@ -3,7 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const cookieController = require('../controllers/cookieController');
 
-router.get('/logIn', userController.logIn, cookieController.createCookie, (req, res) => {
+router.post('/logIn', userController.logIn, cookieController.createCookie, (req, res) => {
   return res.status(200).json(res.locals.userInfo);
 });
 

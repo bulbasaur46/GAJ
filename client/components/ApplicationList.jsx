@@ -1,8 +1,9 @@
 import React from 'react';
+import AddEditApp from './AddEditApp';
 import { DataGrid } from '@mui/x-data-grid';
 
-const ApplicationList = ({applications, onDelete}) => {
-  const rows = applications ? applications.map(app => {
+const ApplicationList = ({apps, setApps}) => {
+  const rows = apps.length ? apps.map(app => {
     return ({ id: app.id, company: app.company, position: app.position });
   }) : [];
   const columns = [
@@ -15,10 +16,12 @@ const ApplicationList = ({applications, onDelete}) => {
   return (
     <div>
       <h1>Your Applications</h1>
-      <div style={{height: 350, width: '100%'}}>
-        <DataGrid rows={rows} columns={columns} />
-      </div>
-      
+      <AddEditApp apps={apps} setApps={setApps}/>
+
+        <div style={{ height: 350, width: '100%' }}>
+          <DataGrid rows={rows} columns={columns} />
+        </div>
+
       {/* <ul>
         {props.applications.map(application => {
           return (

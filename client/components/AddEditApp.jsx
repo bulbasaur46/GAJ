@@ -6,23 +6,24 @@ const AddEditApp = props => {
   const [togglePopup, setTogglePopup] = useState(false);
   const [state, setState] = useState({
     company: '',
-    position: '',
+    job_title: '',
     positionType: '',
     industry: '',
-    dateApplied: new Date(),
-    datePosted: Date.now().toLocaleString(),
+    date_of_application: new Date(),
+    date_posted: Date.now().toLocaleString(),
     recruiterName: '',
     recruiterEmail: '',
   });
 
-  // const handleAddApp = () => {
-  //   axios
-  //     .post(`api/user/applications/${props.userId._id}`, state)
-  //     .then(res => {
-  //       props.setState({...props.state, needsRefresh: true});
-  //     })
-  //     .catch(err => console.log('ERROR:', err));
-  // };
+  const handleAddApp = () => {
+    console.log(state);
+    axios
+      .post('/api/application/create', state)
+      .then(res => {
+        props.setApps({...props.apps, needsRefresh: true});
+      })
+      .catch(err => console.log('ERROR:', err));
+  };
   
   
   return (
@@ -32,7 +33,7 @@ const AddEditApp = props => {
         <input style={{marginTop: 10}} type='button' className='addApp' value='Add' onClick={setTogglePopup}/>
         <main>
           <Popup trigger={togglePopup} setTrigger={setTogglePopup}>
-            <form>
+            <form className='popUp'> 
               <br/>
               <label>Company</label>
               <input
@@ -40,11 +41,11 @@ const AddEditApp = props => {
                 value={state.company}
                 onChange={e => setState({ ...state, company: e.target.value })}
               />
-              <label>Position</label>
+              <label>Job Title</label>
               <input
                 type="text"
-                value={state.position}
-                onChange={e => setState({ ...state, position: e.target.value })}
+                value={state.job_title}
+                onChange={e => setState({ ...state, job_title: e.target.value })}
               />
               <label>Position Type</label>
               <input
@@ -61,14 +62,14 @@ const AddEditApp = props => {
               <label>Date Applied</label>
               <input
                 type="date"
-                value={state.dateApplied}
-                onChange={e => setState({ ...state, dateApplied: e.target.value })}
+                value={state.date_of_application}
+                onChange={e => setState({ ...state, date_of_application: e.target.value })}
               />
               <label>Date Posted</label>
               <input
                 type="date"
-                value={state.datePosted}
-                onChange={e => setState({ ...state, datePosted: e.target.value })}
+                value={state.date_posted}
+                onChange={e => setState({ ...state, date_posted: e.target.value })}
               />
               <label>Recruiter Name</label>
               <input
@@ -82,7 +83,7 @@ const AddEditApp = props => {
                 value={state.recruiterEmail}
                 onChange={e => setState({ ...state, recruiterEmail: e.target.value })}
               />
-              {/* <input type="submit" value='Add' onClick={() => {setTogglePopup(false); handleAddApp();}}/> */}
+              <input type="button" value='Add' onClick={() => {setTogglePopup(false); handleAddApp();}}/>
             </form>
           </Popup>
         </main>

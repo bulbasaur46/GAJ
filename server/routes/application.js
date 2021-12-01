@@ -17,8 +17,18 @@ router.get('/all', applicationController.getAllApplications, (req, res) => {
   res.status(200).json(res.locals.applications);
 });
 
-router.get('/getApplication', applicationController.getAllApplications, (req, res) => {
-  res.status(200).json('res.locals.application');
-});
+// router.get('/getApplication', applicationController.getAllApplications, (req, res) => {
+//   res.status(200).json('res.locals.application');
+// });
+
+router.delete('/deleteApplication',
+  applicationController.deleteUsersToJobs,
+  applicationController.deleteJobsToCompanies,
+  applicationController.deleteJob,
+//may want to add getAllApplications and sent the entire array of objects to the front for an update?
+  (req, res) => {
+    return res.sendStatus(200);
+  }
+);
 
 module.exports = router;

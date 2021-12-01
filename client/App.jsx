@@ -5,7 +5,10 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './containers/Dashboard';
 import ApplicationView from './containers/ApplicationView';
-import './style.scss';
+import AddEditApp from './components/AddEditApp';
+import AppDetails from './components/AppDetails';
+import Calendar from './components/Calendar';
+import './stylesheet/style.scss';
 
 
 const App = () => {
@@ -16,8 +19,12 @@ const App = () => {
           <Route index element={<LoginForm />} />
           <Route path='signup' element={<SignupForm />} />
         </Route>
-        <Route path='/home' element={<Dashboard />}/>
-        <Route path='/details' element={<ApplicationView />}/>
+        <Route path='/home' element={<Dashboard />} />
+        <Route path='/app' element={<ApplicationView />}>
+          <Route path='/app/new' element={<AddEditApp />} />
+          <Route path='/app/:id' element={<AppDetails />} />
+          <Route path='/app/calendar' element={<Calendar />} />
+        </Route>
         <Route 
           path='*' 
           element={

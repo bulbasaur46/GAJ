@@ -91,7 +91,6 @@ applicationController.getAllApplications = (req, res, next) => {
     'JOIN jobs ON jobs._id = usersToJobs.job_id ' +
     'JOIN jobsToCompanies ON jobsToCompanies.job_id = jobs._id ' +
     'INNER JOIN companies ON companies._id = jobsToCompanies.company_id ' +
-    // string() may not work VVVVVVVV need to test
     `WHERE users.email = '${req.cookies.validUser}';`;
     // 'WHERE users.email = \'cl@bla.com\';';
   db.query(queryText, (err, data) => {
@@ -125,12 +124,35 @@ applicationController.getApplication = (req, res, next) => {
   return next();
 };
 
-// might need to be broken down further
 applicationController.updateApplication = (req, res, next) => {
 
-  
 };
 
-applicationController.deleteApplication = (req, res, next) => {};
+//May need to put the req.body["_id"] in quotes
+applicationController.deleteUsersToJobs = (req, res, next) => {
+  const deleteQuery = `DELETE FROM usersToJobs WHERE _id = ${req.body["_id"]};`;
+  db.query(deleteQuery, (err, data) => {
+    if (err) return next(err);
+    return next();
+  });
+};
+
+//May need to put the req.body["_id"] in quotes
+applicationController.deleteJobsToCompanies = (req, res, next) => {
+  const deleteQuery = `DELETE FROM jobsToCompanies WHERE _id = ${req.body["_id"]};`;
+  db.query(deleteQuery, (err, data) => {
+    if (err) return next(err);
+    return next();
+  });
+};
+
+//May need to put the req.body["job_id"] in quotes
+applicationController.deleteJob = (req, res, next) => {
+  const deleteQuery = `DELETE FROM jobs WHERE _id = ${req.body["job_id"]};`;
+  db.query(deleteQuery, (err, data) => {
+    if (err) return next(err);
+    return next();
+  });
+};
 
 module.exports = applicationController;

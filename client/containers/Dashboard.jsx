@@ -8,38 +8,38 @@ import StatsBar from '../components/StatsBar';
 
 const Dashboard = props => {
   const { state } = useLocation();
-  const [userState, setUserState] = useState({
+  const [apps, setApps] = useState({
     ...state,
-    needsRefresh: true,
+    needsRefresh: false,
   });
 
-  // const getUserData = () => {
-  //   axios
-  //     .get(`/api/user/${userState.user._id}`)
-  //     .then((response) => {
-  //       // console.log('GET user response: ', response);
-  //       setUserState(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log('ERROR: ', err);
-  //     });
-  // };
+  const getApps = () => {
+    axios
+      .get('/api/application/all')
+      .then((response) => {
+        // console.log('GET user response: ', response);
+        setApps(response.data);
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
+  };
 
-  // useEffect(() => {
-  //   if (userState.needsRefresh) {
-  //     getUserData();
-  //     state.needsRefresh = false;
-  //   }
-  // }, [userState.needsRefresh]);
+  useEffect(() => {
+    if (apps.needsRefresh) {
+      getApps();
+      apps.needsRefresh = false;
+    }
+  }, [apps.needsRefresh]);
   
   return (
     <div className='dashboard'>
       <div>
-        <ApplicationList state={state}/>
+        <ApplicationList apps={apps} setApps={setApps}/>
       </div>
-      {/* <div>
+      <div>
         <StatsBar state={state}/>
-      </div> */}
+      </div>
     </div>
   );
 };

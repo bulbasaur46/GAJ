@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
@@ -18,7 +19,7 @@ const LoginForm = (props) => {
     setError(null);
     console.log('email:', email.value, 'password:', password.value);
     axios
-      .post('/api/user/getUserData', { 
+      .post('/api/user/logIn', { 
         email: email.value, 
         password: password.value 
       })
@@ -38,6 +39,7 @@ const LoginForm = (props) => {
   
   return (
     <div className='wrap'>
+      <center>Welcome</center><br/>
       <div className='login-field'>
         <TextField 
           className='input' 
