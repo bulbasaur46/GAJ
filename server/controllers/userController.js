@@ -18,7 +18,6 @@ userController.logIn = (req, res, next) => {
         return next({ status: 400, message: {err: 'password does not match'}});
       }
       res.locals.userInfo = userInfo;
-      // console.log('result', result);
       res.cookie('user_id', userInfo._id);
       return next();
     }

@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/user', userRouter);
-// app.use('/application', applicationRouter);
+app.use('/api/application', applicationRouter);
 
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../public/index.html')));
 

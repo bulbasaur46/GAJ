@@ -1,7 +1,7 @@
 const cookieController = {};
 
 cookieController.createCookie = (req, res, next) => {
-  res.cookie("validUser", req.body.email);
+  res.cookie("validUser", req.query.email);
   return next();
 };
 
