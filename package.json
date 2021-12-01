@@ -45,6 +45,7 @@
     "@mui/x-data-grid": "^5.0.1",
     "apollo": "^2.33.9",
     "axios": "^0.24.0",
+    "cookie-parser": "^1.4.6",
     "css-loader": "^6.5.1",
     "express": "^4.17.1",
     "graphql": "^14.7.0",

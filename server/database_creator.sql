@@ -11,9 +11,9 @@ SET row_security = off;
 
 CREATE TABLE public.users (
   "_id" bigserial NOT NULL,
-  "username" varchar NOT NULL UNIQUE,
+  "username" varchar NOT NULL,
   "password" varchar NOT NULL,
-  "email" varchar NOT NULL,
+  "email" varchar NOT NULL UNIQUE,
   "application_count" bigint DEFAULT 0,
   "interview_count" bigint DEFAULT 0,
   CONSTRAINT "users_pk" PRIMARY KEY ("_id")
@@ -32,15 +32,17 @@ CREATE TABLE public.usersToJobs(
 
 CREATE TABLE public.jobs(
   "_id" bigserial NOT NULL,
-  "application" varchar NOT NULL,
+  -- "application" varchar NOT NULL,
+  "company" varchar NOT NULL,
+  "industry" varchar,
   "job_title" varchar NOT NULL,
   "wage" bigint,
   "date_posted" date,
-  "date_of_application" date NOT NULL,
+  "date_of_application" date,
   "url" varchar,
   "recruiter_name" varchar,
   "recruiter_email" varchar,
-  "status" varchar NOT NULL,
+  "status" varchar,
   "to_do_list" varchar,
   "notes" varchar,
   "reminder" varchar,
