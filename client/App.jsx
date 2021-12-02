@@ -17,12 +17,13 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LoginPage />}>
           <Route index element={<LoginForm />} />
-          <Route path='signup' element={<SignupForm />} />
         </Route>
+        <Route path='signup' element={<SignupForm />} />
         <Route path='/home' element={<Dashboard />} />
         <Route path='/app' element={<ApplicationView />}>
           <Route path='/app/new' element={<AddEditApp />} />
-          <Route path='/app/:id' element={<AppDetails />} />
+          <Route path='/app/:id' element={<AppDetails />}/>
+          <Route path='/app/edit' element={<AddEditApp />} />
           <Route path='/app/calendar' element={<Calendar />} />
         </Route>
         <Route 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddEditApp from './AddEditApp';
+import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 
-const ApplicationList = ({apps, setApps}) => {
+const ApplicationList = ({apps, setRefresh}) => {
+  // const delButton = 
   const rows = apps.length ? apps.map(app => {
     return ({ id: app._id, ...app});
   }) : [];
@@ -16,7 +17,7 @@ const ApplicationList = ({apps, setApps}) => {
     {field: 'company', headerName: 'Company', flex: 1},
     {field: 'job_title', headerName: 'Job Title', flex: 1},
     {field: 'date_of_application', headerName: 'Date Applied', flex: 0.5, minWidth: 100, valueFormatter: dateFix},
-    {field: 'status', headerName: 'Status', flex: 0.5, minWidth: 100},
+    {field: 'status', headerName: 'Status', flex: 0.5, minWidth: 100}
   ];
   
   const navigate = useNavigate();

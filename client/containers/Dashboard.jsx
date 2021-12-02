@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation} from "react-router-dom";
 import axios from 'axios';
 import ApplicationList from '../components/ApplicationList';
 import InterviewList from '../components/InterviewList';
@@ -7,7 +7,6 @@ import Calendar from '../components/Calendar';
 import StatsBar from '../components/StatsBar';
 import AddEditApp from '../components/AddEditApp';
 import { Button } from '@mui/material';
-
 const Dashboard = props => {
   const { state } = useLocation();
   const [refresh, setRefresh] = useState(true);
@@ -34,22 +33,25 @@ const Dashboard = props => {
   
   // {/* <AddEditApp apps={apps} setApps={setApps} setRefresh={setRefresh} /> */}
   return (
-    <div className="dashboard">
-      <div>
-        <h1>GAJ (update later)</h1>
-        <img src="/assets/working_person.png"/>
+    <div className="dashboard-container">
+      <div className="title-logo">
+        <img src="/assets/GAJ3.png"/>
+        <img className="worker" src="/assets/working_person.png"/>
       </div>
+      <br/>
+      <div className="dashboard">
+        <div>
+          {/* <AddEditApp apps={apps} setApps={setApps} setRefresh={setRefresh} /> */}
+          <ApplicationList apps={apps} setRefresh={setRefresh} />
 
-      <div>
-        {/* <AddEditApp apps={apps} setApps={setApps} setRefresh={setRefresh} /> */}
-        <ApplicationList apps={apps} setApps={setApps} />
+          <Button className="addApp" variant="text">
+            <Link to="/app/new">Add App</Link>
+          </Button>
+        </div>
+        
+        <StatsBar state={state} apps={apps} />
 
-        <Button className="addApp" variant="text">
-          <Link to="/app/new">Add App</Link>
-        </Button>
-      </div>
-      <div>
-        <StatsBar state={state} apps={apps} setApps={setApps} />
+        
       </div>
     </div>
   );

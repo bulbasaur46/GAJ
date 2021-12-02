@@ -1,42 +1,82 @@
 import React from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Grid } from '@mui/material';
 import AddEditApp from './AddEditApp';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const AppDetails = props => {
   const { state } = useLocation();
+  const { 
+    company, 
+    industry, 
+    job_title, 
+    wage, 
+    date_posted, 
+    url, 
+    date_of_application, 
+    recruiter_name, 
+    recruiter_email, 
+    notes, 
+  } = state;
+
+  const navigate = useNavigate();
+  
+  const handleEdit = () => {
+    navigate('/app/edit', {state: state});
+  }
+
+  const handleDelete = () => {
+    // console.log(state);
+    
+    axios.post(`/api/application/deleteApplication`, { ...state })
+      .then(res => {
+        navigate('/home');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="app-details">
       <span>
-        <p>Company</p><p>{state.company}</p>
+        <h3>Company: {state.company}</h3>
       </span>
       <span>
-        <p>Industry</p><p>{state.industry}</p>
+        <h3>Industry: {industry}</h3>
       </span>
       <span>
-        <p>Job Title</p><p>{state.job_title}</p>
+        <h3>Job Title: {job_title}</h3>
       </span>
       <span>
-        <p>Date Appped</p><p>{new Date(state.date_of_application).toLocaleDateString()}</p>
+        <h3>Wage: {wage}</h3>
       </span>
       <span>
-        <p>Date Posted</p><p>{new Date(state.date_posted).toLocaleDateString()}</p>
+        <h3>Date Applied: {new Date(date_of_application).toLocaleDateString()}</h3>
       </span>
       <span>
-        <p>URL</p><p>{state.url}</p>
+        <h3>URL: {url}</h3>
       </span>
       <span>
-        <p>Wage</p><p>{state.wage}</p>
+        <h3>Date Posted: {new Date(date_posted).toLocaleDateString()}</h3>
       </span>
       <span>
-        <p>Recruiter Name</p><p>{state.recruiter_name}</p>
+        <h3>Recruiter Name: {recruiter_name}</h3>
       </span>
       <span>
-        <p>Recruiter Email</p><p>{state.recruiter_email}</p>
+        <h3>Recruiter Email: {recruiter_email}</h3>
       </span>
       <span>
-        <p>Notes</p><p>{state.notes}</p>
+        <h3>Notes: </h3><h5>{notes}</h5>
       </span>
+      <br/>
+      <input type="button" value='Edit' className='add' onClick={() => handleEdit()}/>
+      <input type="button" value='Delete' className='delete' onClick={() => handleDelete()}/>
+      <Button className="backBtn" variant="text">
+        <Link to="/home">Back</Link>
+      </Button>
     </div>
   );
 };

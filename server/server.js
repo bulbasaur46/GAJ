@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 //Trying this out
 app.use((res, req, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   next();
 });
 

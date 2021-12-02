@@ -20,8 +20,22 @@ router.get('/all', applicationController.getAllApplications, (req, res) => {
 // router.get('/getApplication', applicationController.getAllApplications, (req, res) => {
 //   res.status(200).json('res.locals.application');
 // });
+router.post('/updateApplication',
+  applicationController.deleteUsersToJobs,
+  applicationController.deleteJobsToCompanies,
+  applicationController.deleteJob,
+  applicationController.createJob,
+  applicationController.addJobToUser,
+  applicationController.getCompany,
+  applicationController.createCompany,
+  applicationController.addJobToCompany,
+  (req, res) => {
+    console.log("hi");
+    return res.sendStatus(200);
+  });
 
-router.delete('/deleteApplication',
+
+router.post('/deleteApplication',
   applicationController.deleteUsersToJobs,
   applicationController.deleteJobsToCompanies,
   applicationController.deleteJob,

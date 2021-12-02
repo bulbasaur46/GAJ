@@ -5,10 +5,11 @@ const applicationController = {};
 
 applicationController.createJob = (req, res, next) => {
   // get job data
+  console.log('WE MADE IT HERE!!!');
+
   // only take the properties in job
   const dataProperties = ['company', 'industry', 'job_title', 'wage', 'date_posted', 'date_of_application', 
     'url', 'recruiter_name', 'recruiter_email', 'status', 'to_do_list', 'notes', 'reminder'];
-  
   let queryText = 'INSERT INTO jobs (' + dataProperties.join(', ') + ')';
   const values = [];
   for (const prop of dataProperties) {
@@ -27,7 +28,6 @@ applicationController.createJob = (req, res, next) => {
     res.locals.job_id = result.rows[0]._id;
     return next();
   });
-
 };
 
 applicationController.addJobToUser = (req, res, next) => {
@@ -130,7 +130,7 @@ applicationController.updateApplication = (req, res, next) => {
 
 //May need to put the req.body["_id"] in quotes
 applicationController.deleteUsersToJobs = (req, res, next) => {
-  const deleteQuery = `DELETE FROM usersToJobs WHERE _id = ${req.body["_id"]};`;
+  const deleteQuery = `DELETE FROM usersToJobs WHERE job_id = ${req.body["job_id"]};`;
   db.query(deleteQuery, (err, data) => {
     if (err) return next(err);
     return next();
@@ -139,7 +139,7 @@ applicationController.deleteUsersToJobs = (req, res, next) => {
 
 //May need to put the req.body["_id"] in quotes
 applicationController.deleteJobsToCompanies = (req, res, next) => {
-  const deleteQuery = `DELETE FROM jobsToCompanies WHERE _id = ${req.body["_id"]};`;
+  const deleteQuery = `DELETE FROM jobsToCompanies WHERE job_id = ${req.body["job_id"]};`;
   db.query(deleteQuery, (err, data) => {
     if (err) return next(err);
     return next();

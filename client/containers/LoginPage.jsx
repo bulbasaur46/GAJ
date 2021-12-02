@@ -7,10 +7,9 @@ import LoginForm from '../components/LoginForm';
 const LoginPage = props => {
 
   return (
-    <div>
+    <div className="login-page">
       <span>
-        <Button variant='text' style={{float: 'right'}}
-        >
+        <Button variant='text' style={{float: 'right'}}>
           <Link to='/signup'>Sign Up</Link>
         </Button>
         <Outlet />

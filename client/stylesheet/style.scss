@@ -5,6 +5,11 @@ $accent: #f07167;
 $text: rgb(5, 70, 92);
 $header: #023342;
 $whiteText: white;
+$sizzlingRed: #ff4f63;
+$sonicSilver: #737373;
+$eerieBlack: #141414;
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
 
 * {
 	box-sizing: border-box;
@@ -33,6 +38,7 @@ div.err-msg {
 body {
 	background-color: white;
 	padding-top: 10px;
+	height: 100%;
 }
 
 h1 {
@@ -57,15 +63,31 @@ h4 {
 	color: $header;
 }
 
-.dashboard {
-	background-color: #fff;
-	padding: 2%;
-	margin: 0 auto;
-	box-shadow: 0 0 5px #ccc;
-	border: 1px solid #fff;
-	width: 80%;
-	height: 80%;
-	transform: translateY(5%);
+.dashboard-container {
+	// background-color: $eerieBlack;
+	height: 100%;
+
+	.title-logo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $sizzlingRed;
+		// background-color: red;
+	
+		.worker {
+			max-height: 100px;
+		}
+	}
+	
+	.dashboard {
+		background-color: #fff;
+		padding: 2%;
+		margin: 0 auto;
+		box-shadow: 0 0 5px #ccc;
+		border: 1px solid #fff;
+		width: 80%;
+		height: 80%;
+	}
 }
 
 div.wrap {
@@ -80,7 +102,7 @@ div.wrap {
 	border: 1px solid #fff;
 	/* max-width: 16em; */
 	/* box-shadow: 5px 5px 15px rgba(119, 117, 117, 0.664); */
-	transform: translateY(110%);
+	transform: translateY(50%);
 }
 
 div.signup-pg {
@@ -96,7 +118,7 @@ div.signup-pg {
 	border: 1px solid #fff;
 	/* max-width: 16em; */
 	/* box-shadow: 5px 5px 15px rgba(119, 117, 117, 0.664); */
-	transform: translate(2%, 40%);
+	transform: translate(2%, 20%);
 }
 
 div.login-field {
@@ -105,6 +127,23 @@ div.login-field {
 	margin-top: 10px;
 }
 
+.app-details{
+	background-color: #fff;
+	padding: 2%;
+	margin: 0 auto;
+	box-shadow: 0 0 5px #ccc;
+	border: 1px solid #fff;
+	width: 40%;
+	height: 80%;
+	// transform: translateY(5%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+		span {
+		font-family: 'Material Icons Outlined';
+	}
+}
 
 //PopUp CSS
 //Add Application Page
@@ -185,8 +224,35 @@ input {
 }
 input.add{
 	width: 40%;
-	height: 10px;
+	outline: 1px;
+	padding: 3%;
+	outline-color: black;
 }
+
+input.delete{
+	width: 40%;
+	outline: 1px;
+	padding: 3%;
+	outline-color: black;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+input.delete:hover{
+	width: 40%;
+	outline: 1px;
+	padding: 3%;
+	outline-color: black;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	border: 1px solid #c34242;
+		font-size: 15px;
+		background-color: #c34242;
+}
+
+
 input.submit {
 		width: 95%;
 		padding: 5%;
@@ -266,7 +332,8 @@ input.submit:hover {
 	-webkit-border-radius: 6px;
 	border: 1px solid #353030a1;
 	font-size: 12px;
-	background-color: $primary;
+	// background-color: $primary;
+	background-color: black;
 	color: #fff;
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
