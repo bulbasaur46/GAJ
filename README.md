@@ -1,2 +1,2 @@
 # Get A Job (GAJ)
-# Job application manager
+## Job application manager
